@@ -4,7 +4,9 @@ These data are from set of mouse fecal samples provided by [Jason Bubier from Th
 The samples were run targeting the V1-V3 region of the 16S gene using the 27F 5'-AGAGTTTGATCCTGGCTCAG-3' and 534R 5'-TTACCGCGGCTGCTGG-3' primers.
 
 Our metadata is available to view as a [google sheet](https://docs.google.com/spreadsheets/d/1Tj_wj9h19JU6ShbxPu-2kQ3g0r2hf-YRQbm-R4-xnFk/edit?usp=sharing), we can use the [keemei](https://keemei.qiime2.org/) sheets add-on to validate the metadata.
-This data was collected to measure change in the fecal bacteria in laboratory mice who self administered cocaine.  The mice are from two strains, CC004 mice are high-responding, while CC041 are low responding.  More details on the strains responses can be found [here](https://link-springer-com.unh.idm.oclc.org/article/10.1007/s00213-019-05429-3). There were male and female mice of both strains, and the mice were sampled before and after treatment.  
+This data was collected to measure change in the fecal bacteria in laboratory mice who self administered cocaine.  
+
+The mice are from two strains, CC004 mice are high-responding, while CC041 are low responding.  More details on the strains responses can be found [here](https://link-springer-com.unh.idm.oclc.org/article/10.1007/s00213-019-05429-3). There were male and female mice of both strains, and the mice were sampled before and after treatment.  
 The treatments were the self administration of cocaine, or a saline sham.  
 
 We will primarily use the [Qiime 2](https://qiime2.org/) bioinformatics platform.
