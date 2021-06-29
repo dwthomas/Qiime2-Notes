@@ -73,7 +73,11 @@ How much poor quality sequence can we truncate before trying to merge?
 
 In this case we know our amplicons are about 390 bp long, and we want to preserve approximately 50 bp combined overlap.  So our target is to retain ~450 bp of total sequence from the two reads.  450 bp/2 = 225 bp but looking at the demux.qzv, the forward reads seem to be higher quality than the reverse, so let's retain more of the forward and less of the reverse.
 
-## Denoising
+## Denoising with DADA2
+Documentation: <https://docs.qiime2.org/2021.4/plugins/available/dada2/>
+
+Paper: <https://www.nature.com/articles/nmeth.3869>
+
 We're now ready to denoise our data. Through qiime we will be using the program DADA2, the goal is to take our imperfectly sequenced reads, and recover the "real" sequence composition of the sample that went into the sequencer.
 DADA2 does this by learning the error rates for each transition between bases at each quality score.  It then assumes that all of the sequences are errors off the same original sequence.  Then using the error rates it calculates the likelihood of each sequence arising.  Sequences with a likelihood falling below a threshold are split off into their own groups and the algorithm is iteratively applied.  Because of the error model we should only run samples which were sequenced together through dada2 together, as different runs may have different error profiles.  We can merge multiple runs together after dada2.  During this process dada2 also merges paired end reads, and checks for chimeric sequences.
 ~~~bash
@@ -116,8 +120,12 @@ In the rep-seqs.qzv we can see the sequences and the distribution of sequence le
 The majority of the sequences we observe are in our expected length range.
 Later on we can use this to blast specific sequences we are interested in against the whole nucleotide database.
 
-## Taxonomic Assignment
-To assign taxonomy we will use a naive bayes classifier trained by the qiime2 authors on our gene region.
+## Taxonomic Assignment with vsearch
+Documentation: <https://docs.qiime2.org/2021.4/plugins/available/feature-classifier/classify-consensus-vsearch/>
+
+Paper: <https://peerj.com/articles/2584/>
+
+To assign taxonomy we will use an alignment based classification method.  
 If we were using a different primer pair we would want to use a different method, like vsearch.
 
 ~~~bash
